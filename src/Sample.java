@@ -63,10 +63,23 @@ public class Sample {
     public static int getMaxValue(int inputArray[]) {
         int maxValue = inputArray[0];
         for (int i = 1; i < inputArray.length; i++) {
-            if(inputArray[i]>maxValue){
-                maxValue=inputArray[i];
+            if (inputArray[i] > maxValue) {
+                maxValue = inputArray[i];
             }
         }
         return maxValue;
+    }
+
+    public static int sumOfEvenNumbers(int inputData[]) {
+        if (inputData == null || inputData.length == 0) {
+            return 0;
+        }
+        int sum = 0;
+        for (int i = 0; i < inputData.length; i++) {
+            if (inputData[i] % 2 == 0) {
+                sum += inputData[i];
+            }
+        }
+        return sum;
     }
 }
