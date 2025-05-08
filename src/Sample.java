@@ -1,26 +1,62 @@
+import java.util.Arrays;
+
 public class Sample {
 
-    private int id;
-    private String name;
+    public static int binarySearch(int[] inputArray, int value) {
 
-    public Sample(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+        int result = -1;
+        if (inputArray == null || inputArray.length == 0) {
+            result = -1;
+        } else if (inputArray.length != 1) {
 
-    public int getId() {
-        return id;
-    }
+            Arrays.sort(inputArray);
+            int startPosition = 0;
+            int endPosition = inputArray.length - 1;
+            boolean finishLoop = true;
 
-    public void setId(int id) {
-        this.id = id;
-    }
+            while (finishLoop) {
+                if (endPosition - startPosition == 1) {
+                    if (inputArray[startPosition] == value) {
+                        result = startPosition;
+                    } else if (inputArray[endPosition] == value) {
+                        result = endPosition;
+                    } else {
+                        result = -1;
+                    }
+                    finishLoop = false;
+                } else {
 
-    public String getName() {
-        return name;
-    }
+                    if (inputArray[startPosition] == value) {
+                        result = startPosition;
+                        finishLoop = false;
+                    } else if (inputArray[endPosition] == value) {
+                        result = endPosition;
+                        finishLoop = false;
+                    } else {
+                        int middlePosition = startPosition + (endPosition - startPosition) / 2;
+                        if (inputArray[middlePosition] == value) {
+                            result = middlePosition;
+                            finishLoop = false;
+                        } else {
+                            if ((endPosition - startPosition) != 2) {
+                                if (value > inputArray[middlePosition]) {
+                                    startPosition = middlePosition;
+                                } else if (value < inputArray[middlePosition]) {
+                                    endPosition = middlePosition;
+                                }
+                            }
+                        }
+                    }
 
-    public void setName(String name) {
-        this.name = name;
+                }
+            }
+        } else {
+            if (inputArray[0] == value) {
+                result = 0;
+            } else {
+                result = -1;
+            }
+        }
+        return result;
     }
 }
