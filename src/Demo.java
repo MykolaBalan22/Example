@@ -38,6 +38,35 @@ public class Demo {
         return Arrays.copyOf(result, counter);
     }
 
+
+    public static void cycleSwap(int[] array) {
+        int lastElement = array[array.length - 1];
+
+        for (int i = array.length - 1; i > 0; i--) {
+            array[i] = array[i - 1];
+        }
+        array[0] = lastElement;
+    }
+
+    public static void cycleSwap(int[] array, int shift) {
+
+        int[] shiftArray = new int[shift];
+        System.arraycopy(array, array.length - shift , shiftArray, 0, shift);
+
+        for (int j = shift; j >0; j--) {
+            for (int i = array.length - j - 1; i > 0; i--) {
+                array[i] = array[i - 1];
+            }
+        }
+        for (int i = 0; i < shiftArray.length; i++) {
+            array[i] = shiftArray[i];
+        }
+    }
+
+    public  static  int[][] spiral(int rows, int columns){
+
+    }
+
 }
 
 
