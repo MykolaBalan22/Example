@@ -51,9 +51,9 @@ public class Demo {
     public static void cycleSwap(int[] array, int shift) {
 
         int[] shiftArray = new int[shift];
-        System.arraycopy(array, array.length - shift , shiftArray, 0, shift);
+        System.arraycopy(array, array.length - shift, shiftArray, 0, shift);
 
-        for (int j = shift; j >0; j--) {
+        for (int j = shift; j > 0; j--) {
             for (int i = array.length - j - 1; i > 0; i--) {
                 array[i] = array[i - 1];
             }
@@ -63,7 +63,48 @@ public class Demo {
         }
     }
 
-    public  static  int[][] spiral(int rows, int columns){
+    public static int[][] spiral(int rows, int columns) {
+        int[][] resultArray = new int[rows][columns];
+
+        int counter = 1;
+        int rowStartPosition = 0;
+        int colStartPosition = 0;
+
+        int rowEndPosition = rows;
+        int colEndPosition = columns;
+
+        while (counter <= rows * columns) {
+            for (int i = colStartPosition; i < colEndPosition; i++) {
+                resultArray[rowStartPosition][i] = counter;
+                counter++;
+            }
+            if(counter>=rows * columns){
+                break;
+            }
+            for (int i = rowStartPosition + 1; i < rowEndPosition - 1; i++) {
+                resultArray[i][colEndPosition-1] = counter;
+                counter++;
+            }
+            if(counter>=rows * columns){
+                break;
+            }
+            for (int i = colEndPosition-1; i >= colStartPosition; i--) {
+                resultArray[rowEndPosition-1][i] = counter;
+                counter++;
+            }
+            if(counter>=rows * columns){
+                break;
+            }
+            for (int i = rowEndPosition - 2; i >= rowStartPosition + 1; i--) {
+                resultArray[i][colStartPosition] = counter;
+                counter++;
+            }
+            rowStartPosition++;
+            rowEndPosition--;
+            colStartPosition++;
+            colEndPosition--;
+        }
+        return resultArray;
 
     }
 
