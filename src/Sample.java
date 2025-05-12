@@ -82,4 +82,53 @@ public class Sample {
         }
         return sum;
     }
+
+    public static int[][] spiral(int rows, int columns) {
+
+        int[][] resultArray = new int[rows][columns];
+
+        int rowStartPosition = 0;
+        int columnStartPosition = 0;
+
+        int rowFinishPosition = rows - 1;
+        int columnFinishPosition = columns - 1;
+
+        int counter = 1;
+
+        while (counter <= rows * columns) {
+            for (int i = columnStartPosition; i <= columnFinishPosition; i++) {
+                resultArray[rowStartPosition][i] = counter;
+                counter++;
+            }
+            if (counter > rows * columns) {
+                break;
+            }
+            for (int i = rowStartPosition + 1; i <= rowFinishPosition - 1; i++) {
+                resultArray[i][columnFinishPosition] = counter;
+                counter++;
+            }
+            if (counter > rows * columns) {
+                break;
+            }
+
+            for (int i = columnFinishPosition; i >= columnStartPosition; i--) {
+                resultArray[rowFinishPosition][i] = counter;
+                counter++;
+            }
+            if (counter > rows * columns) {
+                break;
+            }
+            for (int i = rowFinishPosition - 1; i >= rowStartPosition + 1; i--) {
+                resultArray[i][columnStartPosition] = counter;
+                counter++;
+            }
+            columnStartPosition++;
+            columnFinishPosition--;
+            rowStartPosition++;
+            rowFinishPosition--;
+        }
+        return resultArray;
+    }
+
+
 }
