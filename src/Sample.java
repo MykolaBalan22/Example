@@ -130,5 +130,8 @@ public class Sample {
         return resultArray;
     }
 
+    public static int[][] multiply(int[][] matrix) {
+         return null;
+    }
 
 }
