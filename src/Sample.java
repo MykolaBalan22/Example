@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.StringJoiner;
 
 public class Sample {
 
@@ -131,7 +132,25 @@ public class Sample {
     }
 
     public static int[][] multiply(int[][] matrix) {
-         return null;
+        return null;
     }
 
+
+    public static int[] plusOne(int[] digits) {
+        String numberLikeLine = "";
+        for (int i = 0; i < digits.length; i++) {
+            numberLikeLine += digits[i];
+        }
+        Integer number = Integer.valueOf(numberLikeLine);
+        number++;
+        String[] array = number.toString().split("");
+        int [] result = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i]=Integer.valueOf(array[i]);
+        }
+        //////////////////////////////////////
+
+
+        return result;
+    }
 }
